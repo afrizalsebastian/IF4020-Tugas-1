@@ -142,12 +142,12 @@ def decodeHill(text, key):
     # Inverse matriks pakai linalg jadi float64. Ga bisa dipakai. Masih bingung mau gunakan apa
     inv_key = np.linalg.inv(key) % 26
     blocks = [text[i:i + key.shape[0]] for i in range(0, len(text), key.shape[0])]
-    decoded = []
+    result = []
     for block in blocks:
         block = np.pad(block, (0, key.shape[0] - len(block)), mode='constant')
         block = np.dot(inv_key, block) % 26
-        decoded.extend(block)
-    return ''.join([chr(c + ord('A')) for c in decoded])
+        result.extend(block)
+    return ''.join([chr(c + ord('A')) for c in result])
 
 # test extended vigenere
 '''text = "Ghebyon ganteng bet xi!@#'"
