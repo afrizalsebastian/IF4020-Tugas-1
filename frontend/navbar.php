@@ -14,7 +14,7 @@ function navbar(){
                 <a class="nav-link" href="../autokey_vigenere/encryption.php">Autokey Vigenere</a>
                 <a class="nav-link" href="../extended_vigenere/encryption.php">Extended Vigenere</a>
                 <a class="nav-link" href="../affine_cipher/encryption.php">Affine Cipher</a>
-                <a class="nav-link">Playfair Cipher</a>
+                <a class="nav-link" href="../playfair_cipher/encryption.php">Playfair Cipher</a>
                 <a class="nav-link">Hill Cipher</a>
             </div>
             </div>
