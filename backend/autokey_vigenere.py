@@ -1,3 +1,5 @@
+import sys
+
 alphabet26 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def preprocessingPlaintext(plaintext : str):
@@ -6,9 +8,7 @@ def preprocessingPlaintext(plaintext : str):
     return preProcessing
 
 
-def encrypt():
-    plaintext = input("Masukan Plain Text : ")
-    key = input("Key : ")
+def encrypt(plaintext:str, key:str):
     cipher = ""
 
     plaintext = preprocessingPlaintext(plaintext)
@@ -19,8 +19,6 @@ def encrypt():
         keyStream += plaintext[i]
     keyStream = keyStream.upper()
 
-    print(keyStream)
-
     for i in range(plaintextLength):
         plaintextOrd = ord(plaintext[i]) - 65
         keyStreamOrd = ord(keyStream[i]) - 65
@@ -30,9 +28,7 @@ def encrypt():
 
     return cipher
 
-def decrypt():
-    cipher = input("Masukkan Cipher Text : ")
-    key = input("Key : ")
+def decrypt(cipher:str, key:str):
     plaintext = ""
 
     cipherLenght = (len(cipher))
@@ -49,3 +45,14 @@ def decrypt():
         keyStream += plaintext[i]
 
     return plaintext
+
+
+if __name__ == '__main__' :
+    method = sys.argv[1]
+    text = sys.argv[2]
+    key = sys.argv[3]
+
+    if(method == "encrypt"):
+        print(encrypt(text, key))
+    else:
+        print(decrypt(text, key))
