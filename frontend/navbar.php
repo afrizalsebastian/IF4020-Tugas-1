@@ -12,7 +12,7 @@ function navbar(){
             <div class="navbar-nav">
                 <a class="nav-link" href="../standard_vigenere/encryption.php">Vigenere Standard</a>
                 <a class="nav-link" href="../autokey_vigenere/encryption.php">Autokey Vigenere</a>
-                <a class="nav-link" href="#">Extended Vigenere</a>
+                <a class="nav-link" href="../extended_vigenere/encryption.php">Extended Vigenere</a>
                 <a class="nav-link">Affine Cipher</a>
                 <a class="nav-link">Playfair Cipher</a>
                 <a class="nav-link">Hill Cipher</a>

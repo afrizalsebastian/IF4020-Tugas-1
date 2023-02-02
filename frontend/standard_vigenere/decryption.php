@@ -21,8 +21,8 @@
                 <div class="col">
                     <h3>CipherText</h3>
                     <div class="form-floating">
-                        <textarea class="form-control" form="ciphertextForm" name="plaintext" placeholder="Write down your Cipher" id="cipherTextArea" style="height: 600px; overflow-y: auto; resize:none;"></textarea>
-                        <label for="plainTextArea">CipherText</label>
+                        <textarea class="form-control" form="ciphertextForm" name="ciphertext" placeholder="Write down your Cipher" id="cipherTextArea" style="height: 600px; overflow-y: auto; resize:none;"></textarea>
+                        <label for="cipherTextArea">CipherText</label>
                     </div>
                     <form method="post" id="ciphertextForm" class="mt-3">
                         <div class="input-group mb-3">
@@ -37,9 +37,9 @@
                     <div class="form-floating">
                         <textarea readonly class="form-control" name="plaintext" placeholder="Write down your Plaintext" id="cipherTextArea" style="height: 600px; overflow-y: auto; resize:none;"><?php
                             if(isset($_POST['decrypt'])){
-                                $plaintext = $_POST['plaintext'] ;
+                                $ciphertext = $_POST['ciphertext'] ;
                                 $key = $_POST['key'];
-                                $output = shell_exec('python ../../backend/vigenere_standard.py decrypt ' .$plaintext .' ' .$key);
+                                $output = shell_exec('python ../../backend/vigenere_standard.py decrypt ' ."\"".$ciphertext ."\"".' ' ."\"".$key."\"");
                                 echo $output;
                             }
                         ?></textarea>

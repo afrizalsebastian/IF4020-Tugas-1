@@ -13,7 +13,7 @@
     include "../navbar.php";
     navbar();
 ?>  
-    <h1 class="text-center" style="margin-top:15px;">Autokey Vigenere Cipher Decryption</h1>
+    <h1 class="text-center" style="margin-top:15px;">Extended Vigenere Cipher Decryption</h1>
     <a href="decryption.php" class="btn btn-secondary" tabindex="-1" role="button" style="margin-top:15px;" >Make Decryption</a>
     <a href="encryption.php" class="btn btn-secondary" tabindex="-1" role="button" style="margin-top:15px;" >Make Encryption</a>
         <div class="container text-center mt-5">
@@ -39,7 +39,7 @@
                             if(isset($_POST['decrypt'])){
                                 $ciphertext = $_POST['ciphertext'] ;
                                 $key = $_POST['key'];
-                                $output = shell_exec('python ../../backend/autokey_vigenere.py decrypt ' ."\"".$ciphertext."\"" .' ' ."\"".$key."\"");
+                                $output = shell_exec('python ../../backend/extended_vigenere.py decrypt ' ."\"".$ciphertext."\"" .' '."\"".$key."\"");
                                 echo $output;
                             }
                         ?></textarea>

@@ -39,7 +39,7 @@
                             if(isset($_POST['encrypt'])){
                                 $plaintext = $_POST['plaintext'] ;
                                 $key = $_POST['key'];
-                                $output = shell_exec('python ../../backend/autokey_vigenere.py encrypt ' .$plaintext .' ' .$key);
+                                $output = shell_exec('python ../../backend/autokey_vigenere.py encrypt ' ."\"".$plaintext ."\"".' ' ."\"".$key."\"");
                                 echo $output;
                             }
                         ?></textarea>
