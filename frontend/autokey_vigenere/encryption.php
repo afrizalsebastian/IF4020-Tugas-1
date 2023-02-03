@@ -1,3 +1,12 @@
+<?php
+    $file="";
+    if(isset($_POST['btnFile'])){
+        $myfile = fopen($_FILES['inputFile']['tmp_name'], "r") or die("Unable to open file!");
+        $file = fread($myfile,filesize($_FILES['inputFile']['tmp_name']));
+        fclose($myfile);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +30,18 @@
                 <div class="col-5">
                     <h3>Plaintext</h3>
                     <div class="form-floating">
-                        <textarea class="form-control" form="plaintextForm" name="plaintext" placeholder="Write down your Plaintext" id="plainTextArea" style="height: 600px; overflow-y: auto; resize:none;"></textarea>
+                        <textarea class="form-control" form="plaintextForm" name="plaintext" placeholder="Write down your Plaintext" id="plainTextArea" style="height: 600px; overflow-y: auto; resize:none;"><?= $file ?></textarea>
                         <label for="plainTextArea">Plaintext</label>
                     </div>
+                    <form method="post" id="fileInput" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Input Your File Here</label>
+                            <div class="row justify-content-around">
+                                <input class="form-control col" type="file" id="formFile" name="inputFile" accept=".txt">
+                                <button type="submit" class="btn btn-success col" name="btnFile" value="File">OK</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-2">
                     <form method="post" id="plaintextForm" class="mt-3">
@@ -42,6 +60,7 @@
                                 $plaintext = $_POST['plaintext'] ;
                                 $key = $_POST['key'];
                                 $download = "../../download/Cipher.txt";
+                                $file = "";
                                 $output = shell_exec('python ../../backend/autokey_vigenere.py encrypt ' ."\"".$plaintext ."\"".' ' ."\"".$key."\"" .' ' ."\"".$download."\"");
                                 echo $output;
                             }
