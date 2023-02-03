@@ -80,8 +80,17 @@ if __name__ == '__main__' :
     method = sys.argv[1]
     text = sys.argv[2]
     key = sys.argv[3]
+    path = sys.argv[4]
 
     if(method == "encrypt"):
-        print(encodePlayfair(text, key))
+        cipher = encodePlayfair(text, key)
+        print(cipher)
+        f = open(path, "w")
+        f.write(cipher)
+        f.close()
     else:
-        print(decodePlayfair(text, key))
+        plain = decodePlayfair(text, key)
+        print(plain)
+        f = open(path, "w")
+        f.write(plain)
+        f.close()

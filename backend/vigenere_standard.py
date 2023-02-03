@@ -54,8 +54,17 @@ if __name__ == '__main__' :
     method = sys.argv[1]
     text = sys.argv[2]
     key = sys.argv[3]
+    path = sys.argv[4]
 
     if(method == "encrypt"):
-        print(encrypt(text, key))
+        cipher = encrypt(text, key)
+        print(cipher)
+        f = open(path, "w")
+        f.write(cipher)
+        f.close()
     else:
-        print(decrypt(text, key))
+        plain = decrypt(text, key)
+        print(plain)
+        f = open(path, "w")
+        f.write(plain)
+        f.close()

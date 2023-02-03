@@ -18,32 +18,36 @@
     <a href="encryption.php" class="btn btn-secondary" tabindex="-1" role="button" style="margin-top:15px;" >Make Encryption</a>
         <div class="container text-center mt-5">
             <div class="row justify-content-around">
-                <div class="col">
+                <div class="col-5">
                     <h3>CipherText</h3>
                     <div class="form-floating">
                         <textarea class="form-control" form="ciphertextForm" name="ciphertext" placeholder="Write down your Cipher" id="cipherTextArea" style="height: 600px; overflow-y: auto; resize:none;"></textarea>
                         <label for="cipherTextArea">CipherText</label>
                     </div>
+                </div>
+                <div class="col-2">
                     <form method="post" id="ciphertextForm" class="mt-3">
+                    <h3>Key</h3>
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Key</span>
                             <input type="text" name="key" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         </div>
                         <button type="submit" class="btn btn-secondary" name="decrypt" value="submitCiphertext">Decryption</button>
                     </form>
                 </div>
-                <div class="col">
+                <div class="col-5">
                     <h3>Plaintext</h3>
                     <div class="form-floating">
                         <textarea readonly class="form-control" name="plaintext" placeholder="Write down your Plaintext" id="cipherTextArea" style="height: 600px; overflow-y: auto; resize:none;"><?php
                             if(isset($_POST['decrypt'])){
                                 $ciphertext = $_POST['ciphertext'] ;
                                 $key = $_POST['key'];
-                                $output = shell_exec('python ../../backend/vigenere_standard.py decrypt ' ."\"".$ciphertext ."\"".' ' ."\"".$key."\"");
+                                $download = "../../download/Plain.txt";
+                                $output = shell_exec('python ../../backend/vigenere_standard.py decrypt ' ."\"".$ciphertext ."\"".' ' ."\"".$key."\"" .' ' ."\"".$download."\"");
                                 echo $output;
                             }
                         ?></textarea>
                         <label for="cipherTextArea">Plaintext</label>
+                        <a href="../../download/Plain.txt" download class="btn btn-primary" tabindex="-1" style="margin-top:15px;">Download</a>
                     </div>
                 </div>
             </div>

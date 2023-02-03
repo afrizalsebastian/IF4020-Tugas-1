@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Vigenere Standard</title>
+    <title>Playfair Cipher</title>
 </head>
 <body>
 <?php
@@ -53,11 +53,13 @@
                                     }
                                     
                                 }
-                                $output = shell_exec('python ../../backend/playfair_cipher.py encrypt ' ."\"".$plaintext ."\"" .' ' ."\"".$key."\"");
+                                $download = "../../download/Cipher.txt";
+                                $output = shell_exec('python ../../backend/playfair_cipher.py encrypt ' ."\"".$plaintext ."\"" .' ' ."\"".$key."\"" .' ' ."\"".$download."\"");
                                 echo $output;
                             }
                         ?></textarea>
                         <label for="cipherTextArea">CipherText</label>
+                        <a href="../../download/Cipher.txt" download class="btn btn-primary" tabindex="-1" style="margin-top:15px;">Download</a>
                     </div>
                 </div>
             </div>

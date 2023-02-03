@@ -31,8 +31,17 @@ if __name__ == '__main__' :
     text = sys.argv[2]
     key_m = int(sys.argv[3])
     key_b = int(sys.argv[4])
+    path = sys.argv[5]
 
     if(method == "encrypt"):
-        print(encodeAffine(text, key_m, key_b))
+        cipher = encodeAffine(text, key_m, key_b)
+        print(cipher)
+        f = open(path, "w")
+        f.write(cipher)
+        f.close()
     else:
-        print(decodeAffine(text, key_m, key_b))
+        plain = decodeAffine(text, key_m, key_b)
+        print(plain)
+        f = open(path, "w")
+        f.write(plain)
+        f.close()
